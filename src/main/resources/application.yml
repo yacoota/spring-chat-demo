@@ -1,0 +1,34 @@
+server:
+  port: 8888
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  thymeleaf:
+    enabled: true
+    cache: false
+    suffix: .html
+    encoding: UTF-8
+    resources:
+      chain:
+        cache: true
+        strategy:
+          content:
+            enabled: true
+            paths: ['/static/**','/webjars/**']
+      cache-period: 7200
+
+logging:
+  pattern:
+    console: "%d{yyyy/MM/dd-HH:mm:ss.SSS} ${PID:-} [%thread] %clr(%-5p) %C.%M:%L - %m%n"
+    file: "%d{yyyy/MM/dd-HH:mm:ss.SSS} [%thread] %-5p %C.%M:%L - %m%n"
+  group:
+    boot: org.springframework.boot.autoconfigure,org.springframework.boot.web,org.springframework.boot.admin
+  level:
+    root: info
+    web: info
+    sql: info
+    tomcat: info
+    boot: info
+    com:
+      business: trace
